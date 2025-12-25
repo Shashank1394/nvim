@@ -7,5 +7,8 @@ return {
   },
   {
     "ThePrimeagen/vim-be-good",
-  }
+  },
+  {
+    "MaxMEllon/vim-jsx-pretty",
+  },
 }
