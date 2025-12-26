@@ -1,43 +1,40 @@
 return {
-  {
-    "williamboman/mason.nvim",
-    dependencies = {
-      "williamboman/mason-lspconfig.nvim",
-      "neovim/nvim-lspconfig",
-    },
-    opts = {
-      servers = {
-        lua_ls = {
-          settings = {
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+		},
+		opts = {
+			servers = {
+				lua_ls = {
+					settings = {
 						Lua = {
 							diagnostics = {
 								globals = { "vim" },
 							},
 						},
-          },
-        },
-        ts_ls = {},
-        eslint = {},
-        tailwindcss = {},
-      },
-    },
-    config = function(_, opts)
-      require("mason").setup()
+					},
+				},
+				ts_ls = {},
+				eslint = {},
+				tailwindcss = {},
+			},
+		},
+		config = function(_, opts)
+			require("mason").setup()
 
-      require("mason-lspconfig").setup({
-        ensure_installed = {"lua_ls", "eslint", "ts_ls"}
-      })
+			require("mason-lspconfig").setup({
+				ensure_installed = { "lua_ls", "eslint", "ts_ls", "tailwindcss" },
+			})
 
-
-      for server, config in pairs(opts.servers) do
+			for server, config in pairs(opts.servers) do
 				vim.lsp.config(server, config)
 				vim.lsp.enable(server)
 			end
-
-    end
-  },
+		end,
+	},
 }
-
 
 -- return {
 --   -- Mason core
@@ -101,7 +98,7 @@ return {
 --         mapping = cmp.mapping.preset.insert({
 --           ["<CR>"] = cmp.mapping.confirm({ select = false }),
 --           ["<Tab>"] = cmp.mapping(function(fb)
---             if cmp.visible() then cmp.select_next_item() 
+--             if cmp.visible() then cmp.select_next_item()
 --             elseif luasnip.expand_or_jumpable() then luasnip.expand_or_jump()
 --             else fb() end
 --           end, { "i", "s" }),
