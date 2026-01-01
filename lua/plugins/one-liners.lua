@@ -11,7 +11,4 @@ return {
 	{
 		"MaxMEllon/vim-jsx-pretty",
 	},
-	{
-		"windwp/nvim-ts-autotag",
-	},
 }
